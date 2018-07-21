@@ -1,26 +1,27 @@
 <?php
 include "../header.php";?>
-<script src="http:\\localhost\twitter\js\script.js"></script>
+<script src="..\js\script.js"></script>
 
 <?php
 $sql= "select * from user where user_id= {$_SESSION['user_id']}";
 $result= mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
+$date1 = date('d-m-Y', strtotime($row['dob']));
 ?>
 
 <div class="col-xs-3 profile">
 	<?php
 	if($row['profile_pic']==null)
 	{
-		echo '<img class="image" src="http://localhost/twitter/uploads/defaultuser.jpg"  width="250" height="250">';
+		echo '<img class="image" src="../uploads/defaultuser.jpg"  width="250" height="250">';
 	}
 	else
 		echo '<img class="image" src="'.$row["profile_pic"].  '" width="250" height="250" >';
 	?>
 
-	<h1 align="center"><a href="#" id="anchor"><?php echo $row['name'];?></a></h1>
-	<h4 align="center" style="color: #9fa1a5;"><?php echo $row['handle'];?></h4>
-	<?php echo "<br><b>Bio:   </b>". $row['bio']."<br><br> <b>Date Of Birth:  </b>". $row['dob'] ;?>
+	<h1 align="center" style="font-size:3vw;"><a href="#" id="anchor"><?php echo $row['name'];?></a></h1>
+	<h4 align="center" style="color: #9fa1a5; font-size:2vw; "><?php echo $row['handle'];?></h4>
+	<?php echo "<br><b>Bio:   </b>". $row['bio']."<br><br> <b>Date Of Birth:  </b>". $date1 ;?>
 </div>
 <div class="col-xs-3 "></div>
 <div class="col-xs-9 tweet_block">
@@ -41,6 +42,13 @@ if(isset($_GET['followed'])){
   $result=mysqli_query($con,$sql);
   $row=mysqli_fetch_assoc($result);
   echo '<h3>you started following "'.$row['name'].' "</h3><br><br>';
+}
+
+if(isset($_GET['unfollowed'])){
+  $sql="select * from user where user_id=".$_GET['unfollowed'];
+  $result=mysqli_query($con,$sql);
+  $row=mysqli_fetch_assoc($result);
+  echo '<h3>you unfollowed "'.$row['name'].' "</h3><br><br>';
 }
 
 ?>
@@ -86,7 +94,7 @@ if(isset($_GET['followed'])){
 
    		 if($row1['profile_pic']==null)
 	{
-		echo '<img class="tweet_pic" src="http://localhost/twitter/uploads/defaultuser.jpg" >';
+		echo '<img class="tweet_pic" src="../uploads/defaultuser.jpg" >';
 			}
 
 		else{

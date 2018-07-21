@@ -11,14 +11,14 @@ $row = mysqli_fetch_assoc($result);
 	<?php
 	if($row['profile_pic']==null)
 	{
-		echo '<img class="image" src="http://localhost/twitter/uploads/defaultuser.jpg"  width="250" height="250">';
+		echo '<img class="image" src="../uploads/defaultuser.jpg"  width="250" height="250">';
 	}
 	else
 		echo '<img class="image" src="'.$row["profile_pic"].  '" width="250" height="250" >';
 	?>
 
-	<h1 align="center"><a href="#" id="anchor"><?php echo $row['name'];?></a></h1>
-	<h4 align="center" style="color: #9fa1a5;"><?php echo $row['handle'];?></h4>
+	<h1 align="center" style="font-size:3vw;"><a href="#" id="anchor"><?php echo $row['name'];?></a></h1>
+	<h4 align="center" style="color: #9fa1a5; font-size:2vw; "><?php echo $row['handle'];?></h4>
 	<?php echo "<br><b>Bio:   </b>". $row['bio']."<br><br> <b>Date Of Birth:  </b>". $row['dob'] ;?>
 </div>
 <div class="col-xs-3 "></div>
@@ -42,7 +42,7 @@ $row = mysqli_fetch_assoc($result);
 
 		 if($row2['profile_pic']==null)
 	{
-		echo '<img class="tweet_pic" src="http://localhost/twitter/uploads/defaultuser.jpg" >';
+		echo '<img class="tweet_pic" src="../uploads/defaultuser.jpg" >';
 			}
 
 		else

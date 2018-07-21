@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 $target_dir = "uploads/";
-$myfile = $_FILES["fileToUpload"];
+$myfile = $_FILES["image"];
 $bio = $_POST["Bio"];
 
 move_uploaded_file($myfile["tmp_name"], $target_dir. $myfile["name"]);

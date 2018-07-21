@@ -2,11 +2,11 @@
 	<div class="container note">
 		
 		<div class="row ">
-			<div class="col-md-6">
-				<h1 align="center">WhisperIt</h1>
-				<img src="download.svg">
+			<div class="col-xs-6">
+				<h1 align="center">WhisperIt</h1><br><br>
+				<img id="logo" src="http://localhost/twitter/logo.png" >
 			</div>
-			<div class="col-md-6">
+			<div class="col-xs-6">
 				<?php
 					if(isset($_GET["registrationsuccess"])) {
 						echo "<b>You have been registered.</b>";
